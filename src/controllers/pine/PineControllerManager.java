@@ -1,9 +1,11 @@
 package controllers.pine;
 
 import controllers.ControllerManager;
+import ultils.CommonValues;
 
 /**
  * Created by DUC on 8/13/2016.
+ * Updated by Duong on 8/16/2016.
  */
 public class PineControllerManager extends ControllerManager {
     private int count;
@@ -16,7 +18,7 @@ public class PineControllerManager extends ControllerManager {
     public void run(){
         super.run();
         count ++;
-        int enX = 1000;
+        int enX = CommonValues.SCREEN_WIDTH;
         int enY = 300;
         if(count == RESPAWN){
             count = 0;
