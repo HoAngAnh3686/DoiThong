@@ -46,6 +46,10 @@ public class GameObject {
         this.x += gameVector.dx;
         this.y +=gameVector.dy;
     }
+    public void moveTo(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
     public int getMiddleX(){
         return this.x + this.width / 2;

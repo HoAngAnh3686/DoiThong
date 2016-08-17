@@ -10,11 +10,13 @@ import views.ImageDrawer;
  * Created by DUC on 8/13/2016.
  */
 public class PineController extends SingleController {
-    private static final int SPEED = 3;
+    private static final int X_SPEED = -3;
+    private static final int Y_SPEED = 0;
 
     public PineController(GameObject gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
-        this.gameVector.dx = -SPEED;
+        this.gameVector.dx = X_SPEED;
+        this.getGameVector().dy=Y_SPEED;
     }
 
     public static PineController create(int x, int y, PineType type) {
@@ -32,5 +34,6 @@ public class PineController extends SingleController {
 
     public void run(){
         super.run();
+        if (this.getGameObject().getX()<-200) this.getGameObject().destroy();
     }
 }
