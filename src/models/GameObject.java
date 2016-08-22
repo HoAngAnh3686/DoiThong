@@ -68,7 +68,6 @@ public class GameObject {
         Rectangle rect2 = gameObject.getRect();
         return rect1.intersects(rect2);
     }
-
     private Rectangle getRect() {
         return new Rectangle(x, y, width, height);
     }

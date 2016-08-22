@@ -92,10 +92,10 @@ public class GameWindow extends Frame implements Runnable{
             try {
                 PlayerController.instance.run();
                 PineControllerManager.instance.run();
-//                RocketControllerManager.instance.run();
+                RocketControllerManager.instance.run();
                 CollsionPool.instance.run();
 
-                Thread.sleep(17);
+                Thread.sleep(CommonValues.THREAD_DELAY);
                 repaint();
             } catch (InterruptedException e) {
                 e.printStackTrace();

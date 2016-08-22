@@ -14,8 +14,10 @@ import java.util.Random;
  * Updated by Duong on 8/16/2016.
  */
 public class PineControllerManager extends ControllerManager {
-    private int count;
     private static final int RESPAWN = 100;
+    private int t=13;
+    private int count;
+    private int countT;
 
     private PineControllerManager() {
         super();
@@ -23,25 +25,30 @@ public class PineControllerManager extends ControllerManager {
 
     public void run(){
         super.run();
-        Random rd = new Random();
-        int a=rd.nextInt(8)%3;
-        System.out.println(a);
         count ++;
+        countT ++;
+        if (countT==300 && t > 3){
+            t-=1;
+            countT=0;
+        }
+        Random rd = new Random();
+        int a=rd.nextInt(t);
         int enX = CommonValues.SCREEN_WIDTH;
-        int enY = rd.nextInt(500);
-        if (enY<300) enY= 300;
+        int enY = rd.nextInt(10);
+        if (enY<3) enY= 3;
         if(count == RESPAWN ){
             count = 0;
                 PineController pineController = PineController.create(
-                        enX, enY, PineType.GREEN);
+                        enX, CommonValues.SCREEN_HEIGHT- enY*50, PineType.GREEN);
             this.add(pineController);
         }
         Iterator<SingleController> singleControllerIterator = singleControllerVector.iterator();
         while (singleControllerIterator.hasNext()){
             SingleController singleController= singleControllerIterator.next();
-            if (singleController.getGameObject().getX() == PlayerController.instance.getGameObject().getX()+120
+            if (singleController.getGameObject().getX() == PlayerController.instance.getGameObject().getX()+150
                 && a==0)
-                singleController.getGameObject().moveTo(PlayerController.instance.getGameObject().getX()+120,200);
+                singleController.getGameObject().moveTo(PlayerController.instance.getGameObject().getX()+150,
+                        CommonValues.SCREEN_HEIGHT-500);
         }
     }
 

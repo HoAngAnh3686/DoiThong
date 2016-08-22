@@ -1,9 +1,11 @@
 package controllers;
 
 import controllers.enemy.RocketController;
+import controllers.pine.PineController;
 import models.GameObject;
 import models.Player;
 import ultils.CommonValues;
+import ultils.Ultils;
 import views.GameDrawer;
 import views.ImageDrawer;
 
@@ -65,6 +67,7 @@ public class PlayerController extends SingleController implements KeyListener, C
 
         if (gameInput.keySpace) {
             this.gameVector.dy = -FLY_SPEED;
+            Ultils.playSound("resources/sound3.wav",false);
         }
         if(gameInput.keySpace == false){
             this.gameVector.dy = DROP_SPEED;
@@ -74,11 +77,11 @@ public class PlayerController extends SingleController implements KeyListener, C
 
     @Override
     public void onCollide(Colliable colliable) {
-        if (colliable instanceof RocketController){
+        if (colliable instanceof RocketController || colliable instanceof PineController){
             gameObject.destroy();
             System.out.println("colliable");
             CommonValues.GAME_RUNNING = false;
-//            System.exit(0);
+            System.exit(0);
         }
     }
 }
