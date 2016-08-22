@@ -65,7 +65,7 @@ public class GameWindow extends Frame implements Runnable{
         });
         this.addKeyListener(PlayerController.instance);
 
-        background = Ultils.loadImage("resources/background2.jpg");
+        background = Ultils.loadImage("resources/background.png");
         this.bufferedImage = new BufferedImage(CommonValues.SCREEN_WIDTH,CommonValues.SCREEN_HEIGHT,BufferedImage.TYPE_INT_ARGB);
         this.bufferImageGraphic = bufferedImage.getGraphics();
 
@@ -82,7 +82,7 @@ public class GameWindow extends Frame implements Runnable{
         PineControllerManager.instance.draw(bufferImageGraphic);
         RocketControllerManager.instance.draw(bufferImageGraphic);
 
-        g.drawImage(bufferedImage, -14, 0, null);
+        g.drawImage(bufferedImage, 0, 0, null);
 
     }
 

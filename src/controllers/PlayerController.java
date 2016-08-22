@@ -72,6 +72,8 @@ public class PlayerController extends SingleController implements KeyListener, C
         if(gameInput.keySpace == false){
             this.gameVector.dy = DROP_SPEED;
         }
+        if (PlayerController.instance.getGameObject().getY()<=0)
+            PlayerController.instance.getGameObject().moveTo(PlayerController.instance.getGameObject().getX(),0);
         super.run();
     }
 
